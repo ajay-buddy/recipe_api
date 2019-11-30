@@ -1,5 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, \
+                                        PermissionsMixin
+
 
 class UserManger(BaseUserManager):
     def create_user(self, email, password=None, **extra_feilds):
@@ -19,6 +21,7 @@ class UserManger(BaseUserManager):
         user.is_superuser = True
         user.save(using=self.db)
         return user
+
 
 class User(AbstractBaseUser, PermissionsMixin):
     """Custom user model that supports useing email instead of username"""
